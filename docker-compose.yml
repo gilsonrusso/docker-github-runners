@@ -1,0 +1,25 @@
+services:
+  # Runner para a Organização (Atende todos os repositórios da Org)
+  org-runner:
+    image: myoung34/github-runner:latest
+    restart: always
+    environment:
+      - ACCESS_TOKEN=${GITHUB_PAT}
+      - RUNNER_SCOPE=org
+      - ORG_NAME=${ORG_NAME}
+      - RUNNER_NAME_PREFIX=${ORG_RUNNER_NAME}
+      - LABELS=docker,linux,x64,org-runner
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  # Runner para um repositório pessoal específico
+  personal-runner:
+    image: myoung34/github-runner:latest
+    restart: always
+    environment:
+      - ACCESS_TOKEN=${GITHUB_PAT}
+      - REPO_URL=${PERSONAL_REPO_URL}
+      - RUNNER_NAME_PREFIX=${PERSONAL_RUNNER_NAME}
+      - LABELS=docker,linux,x64,personal-runner
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
