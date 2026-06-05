@@ -21,5 +21,7 @@ services:
       - REPO_URL=${PERSONAL_REPO_URL}
       - RUNNER_NAME_PREFIX=${PERSONAL_RUNNER_NAME}
       - LABELS=docker,linux,x64,personal-runner
+      - RUNNER_WORKDIR=/tmp/github-runner/personal
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp/github-runner/personal:/tmp/github-runner/personal

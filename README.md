@@ -19,24 +19,24 @@ Este projeto permite rodar múltiplos runners do GitHub Actions localmente usand
 
 ### Subir um runner de cada tipo
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Escalar (Rodar múltiplos runners)
 Para rodar, por exemplo, 3 instâncias do runner de organização:
 ```bash
-docker-compose up -d --scale org-runner=3
+docker compose up -d --scale org-runner=3
 ```
 
 ### Parar tudo
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ## Monitoramento
 Você pode ver os logs dos runners em tempo real com:
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 E conferir no painel do GitHub:
